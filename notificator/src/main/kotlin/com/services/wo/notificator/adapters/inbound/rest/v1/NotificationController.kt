@@ -2,6 +2,7 @@ package com.services.wo.notificator.adapters.inbound.rest.v1
 
 import com.services.wo.notificator.application.MailService
 import com.services.wo.notificator.domain.models.Order
+import com.services.wo.notificator.domain.ports.MailServicePort
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.media.Content
 import io.swagger.v3.oas.annotations.media.Schema
@@ -16,7 +17,7 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody as OperationRequestB
 @RestController
 @RequestMapping("/v1/notify")
 class NotificationController (
-    private val service: MailService
+    private val service: MailServicePort
 ) {
 
     @Async
