@@ -19,6 +19,7 @@
     * [Example Environment Variables](#example-environment-variables)
 - [Docker Usage](#whale-docker-usage)
     * [Running the Application](#running-the-application)
+- [Commit Message Conventions](#commit-message-conventions)
 - [Contact](#handshake-contact)
 
 ## :star: About the project
@@ -76,6 +77,18 @@ RAVENDB_URL=raven-url
 cd docker
 docker compose up -d
 ```
+
+## Commit Message Conventions
+
+### The following commit types are used in this project:
+
+*   **feat:** Introduces a new feature to the project.
+*   **fix:** Addresses a bug in the project.
+*   **docs:** Adds or updates documentation.
+*   **build:** Changes to the build process or external dependencies (e.g., npm, webpack).
+*   **chore:** General maintenance tasks, changes that don't affect the core code (e.g., updating dependencies, configuring tools).
+*   **test:** Adds or modifies tests.
+*   **refactor:** Code refactoring without adding new features or fixing bugs.
 
 ## :handshake: Contact
 LinkedIn: [Gusthawo Junkes](https://www.linkedin.com/in/gusthawojunkes/)
