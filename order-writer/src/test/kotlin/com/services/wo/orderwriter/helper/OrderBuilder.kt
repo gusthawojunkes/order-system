@@ -5,6 +5,7 @@ import com.services.wo.orderwriter.domain.models.Customer
 import com.services.wo.orderwriter.domain.models.Order
 import com.services.wo.orderwriter.domain.models.OrderItem
 import java.math.BigDecimal
+import java.util.UUID
 
 class OrderBuilder {
     private var id: String = "default-id"
@@ -22,6 +23,16 @@ class OrderBuilder {
     fun withStatus(status: OrderStatus) = apply { this.status = status }
     fun withCustomer(customer: Customer) = apply { this.customer = customer }
     fun withItems(items: List<OrderItem>) = apply { this.items = items }
+
+    fun default() = apply {
+        this.id = UUID.randomUUID().toString()
+        this.price = BigDecimal("100.00")
+        this.quantity = BigDecimal("2")
+        this.currency = "BRL"
+        this.status = OrderStatus.PENDING
+        this.customer = CustomerBuilder().default().build()
+        this.items = listOf(OrderItemBuilder().default().build())
+    }
 
     fun build(): Order {
         return Order(
