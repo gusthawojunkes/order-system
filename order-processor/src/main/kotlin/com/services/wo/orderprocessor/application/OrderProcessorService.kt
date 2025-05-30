@@ -14,11 +14,8 @@ class OrderProcessorService(
     private val notificatorClient: NotificatorClientPort
 ) : OrderProcessorPort {
 
-    private val logger = LoggerFactory.getLogger(OrderProcessorService::class.java)
-
     override fun process(order: Order) {
         repository.save(order)
-        logger.info("Sending notification to customer")
         notificatorClient.sendNotification(order)
     }
 
