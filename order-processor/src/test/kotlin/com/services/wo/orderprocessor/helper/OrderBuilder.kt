@@ -1,6 +1,6 @@
 package com.services.wo.orderprocessor.helper
 
-import com.services.wo.notificator.domain.enums.OrderStatus
+import com.services.wo.orderprocessor.domain.enums.OrderStatus
 import com.services.wo.orderprocessor.domain.models.Customer
 import com.services.wo.orderprocessor.domain.models.Order
 import com.services.wo.orderprocessor.domain.models.OrderItem

@@ -33,21 +33,21 @@ class OrderConsumerTest {
         verify(ack).acknowledge()
     }
 
-//    @Test
-//    fun `should handle exception when processing wrong message`() {
-//        val record = ConsumerRecord("orders", 0, 0L, "key", """{"idx":"2","pricex":400.0,"quantityx":8.0}""")
-//        val ack = mock(Acknowledgment::class.java)
-//
-//        val order = mock(Order::class.java)
-//        `when`(service.process(order)).thenThrow(RuntimeException("Invalid Order"))
-//
-//        assertThrows<Exception> {
-//            consumer.run(record, ack)
-//        }
-//
-//        verify(service, never()).process(order)
-//        verify(ack, never()).acknowledge()
-//    }
+    @Test
+    fun `should handle exception when processing wrong message`() {
+        val record = ConsumerRecord("orders", 0, 0L, "key", """{"idx":"2","pricex":400.0,"quantityx":8.0}""")
+        val ack = mock(Acknowledgment::class.java)
+
+        val order = mock(Order::class.java)
+        `when`(service.process(order)).thenThrow(RuntimeException("Invalid Order"))
+
+        assertThrows<Exception> {
+            consumer.run(record, ack)
+        }
+
+        verify(service, never()).process(order)
+        verify(ack, never()).acknowledge()
+    }
 
     @Test
     fun `should not acknowledge if processing fails`() {
@@ -64,9 +64,7 @@ class OrderConsumerTest {
 
         try {
             consumer.run(record, ack)
-        } catch (e: Exception) {
-            // Ignored for test
-        }
+        } catch (ignored: Exception) {}
 
         verify(ack, never()).acknowledge()
     }

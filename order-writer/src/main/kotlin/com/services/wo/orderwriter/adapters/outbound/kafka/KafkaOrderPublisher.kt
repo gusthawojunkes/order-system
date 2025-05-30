@@ -9,7 +9,6 @@ import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Component
 import java.util.*
 
-
 @Component
 class KafkaOrderPublisher (
     private val kafkaTemplate: KafkaTemplate<String, String>
