@@ -13,7 +13,7 @@ object MailContentFactory {
         OrderStatus.ON_THE_WAY -> OnTheWayMailContentStrategy(order)
         OrderStatus.COMPLETED -> CompletedMailContentStrategy(order)
         OrderStatus.CANCELED -> CanceledMailContentStrategy(order)
-        else -> throw IllegalArgumentException("Unsupported status: ${order.status}")
+        OrderStatus.PENDING -> throw UnsupportedOperationException("Pending orders do not have a mail content strategy")
     }
 
 }
