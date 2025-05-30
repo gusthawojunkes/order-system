@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 
 @FeignClient(name = "notificator-service", url = "\${notificator-url}")
-interface NotificatorServiceClient {
+interface NotificatorClient {
     @PostMapping("/v1/notify/email")
     fun sendEmail(@RequestBody order: Order)
 }
