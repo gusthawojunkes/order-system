@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.mockito.Mockito.*
 import org.springframework.kafka.support.Acknowledgment
-import java.math.BigDecimal
 
 class OrderConsumerTest {
 
@@ -23,8 +22,8 @@ class OrderConsumerTest {
         val ack = mock(Acknowledgment::class.java)
         val order = OrderBuilder()
             .withId("1")
-            .withPrice(BigDecimal("100.0"))
-            .withQuantity(BigDecimal("2.0"))
+            .withPrice("100.0")
+            .withQuantity("2.0")
             .build()
 
         consumer.run(record, ack)
@@ -55,8 +54,8 @@ class OrderConsumerTest {
         val ack = mock(Acknowledgment::class.java)
         val order = OrderBuilder()
             .withId("1")
-            .withPrice(BigDecimal("100.0"))
-            .withQuantity(BigDecimal("2.0"))
+            .withPrice("100.0")
+            .withQuantity("2.0")
             .build()
 
         `when`(objectMapper.readValue(record.value(), Order::class.java)).thenReturn(order)

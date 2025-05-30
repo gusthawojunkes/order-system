@@ -16,8 +16,8 @@ class OrderBuilder {
     private var items: List<OrderItem> = emptyList()
 
     fun withId(id: String) = apply { this.id = id }
-    fun withPrice(price: BigDecimal) = apply { this.price = price }
-    fun withQuantity(quantity: BigDecimal) = apply { this.quantity = quantity }
+    fun withPrice(price: String) = apply { this.price = BigDecimal(price) }
+    fun withQuantity(quantity: String) = apply { this.quantity = BigDecimal(quantity) }
     fun withCurrency(currency: String) = apply { this.currency = currency }
     fun withStatus(status: OrderStatus) = apply { this.status = status }
     fun withCustomer(customer: Customer) = apply { this.customer = customer }
