@@ -33,4 +33,6 @@ replay_pid*
 .DS_Store
 
 /docker/.env
+/docker/compose-local.yaml
+
 /order-writer/src/main/resources/application-local.yaml
