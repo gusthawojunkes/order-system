@@ -4,6 +4,7 @@ server:
 logging:
   level:
     root: INFO
+    org.apache.kafka: WARN
 
 kafka:
   topic: ${KAFKA_ORDERS_TOPIC:orders}
