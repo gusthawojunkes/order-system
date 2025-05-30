@@ -15,6 +15,7 @@ class OrderProcessorService(
 ) : OrderProcessorPort {
 
     override fun process(order: Order) {
+        order.startProcessing()
         repository.save(order)
         notificatorClient.sendNotification(order)
     }
