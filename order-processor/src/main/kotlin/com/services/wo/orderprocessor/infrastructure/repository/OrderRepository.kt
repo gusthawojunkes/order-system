@@ -21,8 +21,8 @@ class OrderRepository (
                 logger.info("Order saved successfully: ${order.id}")
             }
         } catch (e: Exception) {
-            e.printStackTrace()
             logger.error("Error saving order: ${e.message}", e)
+            throw e
         }
 
     }

@@ -4,8 +4,6 @@ import com.services.wo.orderprocessor.domain.models.Order
 import com.services.wo.orderprocessor.domain.ports.NotificatorClientPort
 import com.services.wo.orderprocessor.domain.ports.OrderProcessorPort
 import com.services.wo.orderprocessor.domain.repository.OrderRepositoryPort
-import com.services.wo.orderprocessor.infrastructure.repository.OrderRepository
-import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 @Service
