@@ -26,7 +26,6 @@ class OrderConsumer(
             ack.acknowledge()
             logger.info("Message ${record.key()} processed successfully")
         } catch (e: Exception) {
-            e.printStackTrace()
             logger.error("Error processing message: ${e.message}", e)
             throw e
         }
