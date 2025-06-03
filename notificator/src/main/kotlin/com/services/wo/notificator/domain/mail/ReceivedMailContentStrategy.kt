@@ -24,7 +24,6 @@ class ReceivedMailContentStrategy (override val order: Order) : MailContentStrat
                   <p>Recebemos seu pedido <strong>#${order.id}</strong> com sucesso em <strong>$formattedToday</strong>.</p>
                    <p>Detalhes do pedido:</p>
                     <ul>
-                        <li><strong>Status:</strong> ${order.status.description}</li>
                         <li><strong>Valor Total:</strong> ${order.currency}${"%.2f".format(order.price)}</li>
                         <li><strong>Quantidade:</strong> ${order.quantity}</li>
                     </ul>
