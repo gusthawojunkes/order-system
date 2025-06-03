@@ -104,9 +104,20 @@ services:
     networks:
       - order-system-net
 
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - order-system-net
+    volumes:
+      - redis-data:/data
+
 volumes:
   kafka-data:
   ravendb-data:
+  redis-data:
 
 networks:
   order-system-net:
