@@ -1,6 +1,5 @@
 package com.services.wo.notificator.adapters.inbound.rest.v1
 
-import com.services.wo.notificator.application.MailService
 import com.services.wo.notificator.domain.models.Order
 import com.services.wo.notificator.domain.ports.MailServicePort
 import io.swagger.v3.oas.annotations.Operation
@@ -40,8 +39,5 @@ class NotificationController (
         )
     ])
     @PostMapping("/email")
-    fun sendEmail(@RequestBody order: Order) {
-        service.send(order)
-    }
-
+    fun sendEmail(@RequestBody order: Order) = service.send(order)
 }
