@@ -1,6 +1,7 @@
 package com.services.wo.notificator.application.factory
 
 import com.services.wo.notificator.domain.enums.OrderStatus
+import com.services.wo.notificator.domain.exceptions.UnsupportedMailContentException
 import com.services.wo.notificator.domain.mail.*
 import com.services.wo.notificator.domain.ports.MailContentStrategy
 import com.services.wo.notificator.helper.OrderBuilder
@@ -37,7 +38,7 @@ class MailContentFactoryTest {
     fun `should throw UnsupportedOperationException for PENDING status`() {
         val order = OrderBuilder().withStatus(OrderStatus.PENDING).build()
 
-        val exception = assertThrows<UnsupportedOperationException> {
+        val exception = assertThrows<UnsupportedMailContentException> {
             MailContentFactory.from(order)
         }
 

@@ -1,6 +1,7 @@
 package com.services.wo.notificator.application
 
 import com.services.wo.notificator.application.factory.MailContentFactory
+import com.services.wo.notificator.domain.exceptions.NotificationFailedException
 import com.services.wo.notificator.domain.ports.MailServicePort
 import com.services.wo.notificator.domain.models.Order
 import jakarta.mail.internet.MimeMessage
@@ -16,19 +17,24 @@ class MailService (
 
     private val logger = LoggerFactory.getLogger(MailService::class.java)
 
+    @Throws(NotificationFailedException::class)
     override fun send(order: Order) {
-        val message: MimeMessage = sender.createMimeMessage()
-        val helper = MimeMessageHelper(message, true, "UTF-8")
-        val email = order.customer.email
+        try {
+            val email = order.customer.email
+            val message: MimeMessage = sender.createMimeMessage()
+            val helper = MimeMessageHelper(message, true, "UTF-8")
 
-        val content = MailContentFactory.from(order)
+            val content = MailContentFactory.from(order)
 
-        helper.setTo(email)
-        helper.setSubject(content.subject())
-        helper.setText(content.body(), true)
+            helper.setTo(email)
+            helper.setSubject(content.subject())
+            helper.setText(content.body(), true)
 
-        sender.send(message)
-        logger.info("Message ${order.id} sent to ${order.customer.name}")
+            sender.send(message)
+            logger.info("Message sent to ${order.customer.email}")
+        } catch (e: Exception) {
+            logger.error("Error creating mail content for order ${order.id}: ${e.message}")
+            throw NotificationFailedException(e.message, e)
+        }
     }
-
 }
