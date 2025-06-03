@@ -3,7 +3,6 @@ package com.services.wo.notificator.helper
 import com.services.wo.notificator.domain.enums.OrderStatus
 import com.services.wo.notificator.domain.models.Customer
 import com.services.wo.notificator.domain.models.Order
-import com.services.wo.notificator.domain.models.OrderItem
 import java.math.BigDecimal
 
 class OrderBuilder {
@@ -12,8 +11,7 @@ class OrderBuilder {
     private var quantity: BigDecimal = BigDecimal.ZERO
     private var currency: String = "R$"
     private var status: OrderStatus = OrderStatus.PENDING
-    private var customer: Customer = Customer("", "default-customer", "", "000-000-0000", "default-address")
-    private var items: List<OrderItem> = emptyList()
+    private var customer: Customer = CustomerBuilder().build()
 
     fun withId(id: String) = apply { this.id = id }
     fun withPrice(price: String) = apply { this.price = BigDecimal(price) }
@@ -21,7 +19,6 @@ class OrderBuilder {
     fun withCurrency(currency: String) = apply { this.currency = currency }
     fun withStatus(status: OrderStatus) = apply { this.status = status }
     fun withCustomer(customer: Customer) = apply { this.customer = customer }
-    fun withItems(items: List<OrderItem>) = apply { this.items = items }
 
     fun build(): Order {
         return Order(
@@ -30,8 +27,7 @@ class OrderBuilder {
             quantity = quantity,
             currency = currency,
             status = status,
-            customer = customer,
-            items = items
+            customer = customer
         )
     }
 }

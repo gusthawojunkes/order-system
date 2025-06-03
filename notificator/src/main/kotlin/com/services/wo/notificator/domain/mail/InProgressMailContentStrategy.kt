@@ -6,7 +6,7 @@ import java.time.LocalDate
 
 class InProgressMailContentStrategy (override val order: Order) : MailContentStrategy {
 
-    override fun subject(): String = "🥄 Seu pedido ${order.id} está sendo preparado pelo restaurante!"
+    override fun subject(): String = "🥄 Seu pedido #${order.id} está sendo preparado pelo restaurante!"
 
     override fun body(): String {
         val companyName = "WOIT Solutions"

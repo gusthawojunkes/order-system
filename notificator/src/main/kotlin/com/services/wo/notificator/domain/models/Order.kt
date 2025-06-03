@@ -24,8 +24,5 @@ data class Order (
     val status: OrderStatus,
 
     @Schema(description = "Customer details associated with the order")
-    @NotNull val customer: Customer,
-
-    @Schema(description = "List of items in the order")
-    @NotEmpty val items: List<OrderItem>,
+    @NotNull val customer: Customer
 )

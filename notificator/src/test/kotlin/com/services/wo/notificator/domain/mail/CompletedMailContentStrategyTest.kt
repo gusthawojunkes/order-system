@@ -20,7 +20,7 @@ class CompletedMailContentStrategyTest {
 
     @Test
     fun bodyReturnsFormattedHtmlWithOrderDetails() {
-        val customer = CustomerBuilder().withName("John Doe").build()
+        val customer = CustomerBuilder().withName("Jane Doe").build()
         val order = OrderBuilder().withId("1").withCustomer(customer).build()
         val strategy = CompletedMailContentStrategy(order)
         val currentYear = LocalDate.now().year
