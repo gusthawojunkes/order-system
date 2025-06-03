@@ -1,6 +1,5 @@
 package com.services.wo.orderprocessor.adapters.outbound.notificator
 
-import com.services.wo.orderprocessor.application.OrderProcessorService
 import com.services.wo.orderprocessor.domain.models.Order
 import com.services.wo.orderprocessor.domain.ports.NotificatorClientPort
 import com.services.wo.orderprocessor.infrastructure.feign.NotificatorClient

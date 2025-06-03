@@ -24,6 +24,5 @@ class OrderRepository (
             logger.error("Error saving order: ${e.message}", e)
             throw e
         }
-
     }
 }
