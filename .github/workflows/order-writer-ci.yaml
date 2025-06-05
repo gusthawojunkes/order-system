@@ -1,0 +1,35 @@
+name: "[CI] Order Writer Service"
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - 'order-writer/**'
+      - '.github/workflows/order-writer-ci.yaml'
+
+jobs:
+  test-order-writer:
+    name: Test Order Writer Service
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./order-writer
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'corretto'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Test with Gradle
+        run: ./gradlew test
