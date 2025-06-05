@@ -12,7 +12,7 @@ on:
 
 jobs:
   test-order-writer:
-    name: Test Order Writer Service
+    name: Running all tests
     runs-on: ubuntu-latest
     defaults:
       run:
