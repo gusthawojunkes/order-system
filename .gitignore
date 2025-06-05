@@ -36,3 +36,4 @@ replay_pid*
 /docker/compose-local.yaml
 
 /order-writer/src/main/resources/application-local.yaml
+/order-writer/src/test/resources/application-test.yaml
